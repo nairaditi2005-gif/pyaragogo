@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Gogo 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffe6f0, #fff6e5);
+  color: #444;
+}
+
+.page {
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page.active {
+  display: flex;
+}
+
+input {
+  padding: 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+button {
+  background: #ff5c8a;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 10px;
+}
+
+img {
+  max-width: 300px;
+  width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1: PASSWORD -->
+<div id="page1" class="page active">
+  <h2>🔒 Only Gogo can enter 💗</h2>
+  <input type="password" id="password" placeholder="Enter password">
+  <button onclick="checkPassword()">Unlock</button>
+</div>
+
+<!-- PAGE 2: PHOTO -->
+<div id="page2" class="page">
+  <img src="gogo.jpeg" alt="Us together">
+  <p>Please read till the end 💌</p>
+  <button onclick="goToPage(3)">Next</button>
+</div>
+
+<!-- PAGE 3: APOLOGY MESSAGE -->
+<div id="page3" class="page">
+  <p style="max-width: 600px; font-size: 1.1rem;">
+    baby mera bacha.... i love you so much.. meko pata hai maine jho ye do din kiya wo bilkul sahi nhi tha
+    and i promise baby wapis kabhi bhi nhi krungi jaan i really love you na gogo
+  </p>
+  <button onclick="goToPage(4)">Next</button>
+</div>
+
+<!-- PAGE 4: YES / NO -->
+<div id="page4" class="page">
+  <p style="font-size: 1.2rem;">Can you forgive me?</p>
+  <button onclick="finalYes()">Yes</button>
+  <button onclick="finalNo()">No</button>
+</div>
+
+<!-- PAGE 5: FINAL -->
+<div id="page5" class="page">
+  <h1 id="finalText"></h1>
+  <button onclick="closePage()">Close 🌸</button>
+</div>
+
+<script>
+function showPage(n) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + n).classList.add('active');
+}
+
+function checkPassword() {
+  if (document.getElementById('password').value === 'MeraRamalai') {
+    showPage(2);
+  } else {
+    alert('Wrong password. Only Gogo knows it.');
+  }
+}
+
+function goToPage(n) {
+  showPage(n);
+}
+
+function finalYes() {
+  document.getElementById('finalText').innerText =
+    'Thank you for forgiving me. I love you always and forever.';
+  showPage(5);
+}
+
+function finalNo() {
+  document.getElementById('finalText').innerText =
+    'Please communicate with me about why your answer is no and text me right now.';
+  showPage(5);
+}
+
+function closePage() {
+  alert('You can close this page now 💗');
+}
+</script>
+
+</body>
+</html>
